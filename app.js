@@ -318,11 +318,61 @@ console.log('Vegetarian Dish Options: ', vegDishOptions);
 
 //8b. Use the filter method to eliminate duplicate from problem 8a.
 
+function problemEightB(cuisines) {
+
+    let cuisineTypes = cuisines.filter((cuisine, index) => {
+        return cuisines.indexOf(cuisine) === index;
+    })
+    return cuisineTypes;
+}
+
+let distinctCuisineTypes = problemEightB(cuisineTypes);
+console.log('Unique Cuisine Types: ', distinctCuisineTypes);
+
 //11. Create a function that will return dishes whose ingredients array INCLUDES "tomato" OR "cheese".
 //Hint: You do not want to check the array's indexes to find out what the array INCLUDES.
 //Filter
 
+function problemEleven() {
+
+    let results = dishes.filter(function(dish) {
+        if (dish.ingredients.includes('tomato') || dish.ingredients.includes('cheese')) {
+            return true;
+        }
+    })
+    return results;
+}
+
+let cheeseOrTomato = problemEleven();
+console.log('Cheese or Tomato Options: ', cheeseOrTomato);
+
+
 //12. Create a function that will return the total serving count of all dishes.
 //Must use Reduce, not a loop.
 
+function problemTwelve() {
+    let total = dishes.reduce(function (servings, dish) {
+        return servings + dish.servings;
+    }, 0);
+    return total;
+}
+
+let totalServings = problemTwelve();
+console.log('Total number of servings: ', totalServings);
+
+
 //13. Create a function that will return an array of any objects that do not share a cuisine type with any other objects.
+
+function problemThirteen(cuisines) {
+
+    let uniqueCuisines = cuisines.filter((cuisine) => {
+        if (cuisines.filter(x => x === cuisine).length > 1 ) {
+            return false;
+        }
+        return true;
+    })
+    return uniqueCuisines;
+}
+
+let uniqueCuisines = problemThirteen(cuisineTypes);
+console.log('Unique Cuisine Options: ', uniqueCuisines);
